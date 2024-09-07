@@ -39,6 +39,7 @@ nav {
     align-items: center;
 }
 
+/* Desktop menu styles */
 nav ul {
     display: flex;
     list-style: none;
@@ -80,14 +81,6 @@ nav ul li a:hover {
     transition: 0.3s;
 }
 
-.navbar-menu {
-    display: flex;
-}
-
-.navbar-menu.active {
-    display: block;
-}
-
 /* Mobile Menu Styles */
 .mobile-menu {
     display: none;
@@ -97,12 +90,16 @@ nav ul li a:hover {
     background: rgba(0, 0, 0, 0.9);
     width: 100%;
     text-align: center;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
 }
 
 .mobile-menu ul {
     display: flex;
     flex-direction: column;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .mobile-menu ul li {
@@ -117,6 +114,32 @@ nav ul li a:hover {
 
 .mobile-menu ul li a:hover {
     color: #ff4b5c;
+}
+
+/* Show the mobile menu when active */
+.mobile-menu.active {
+    display: flex;
+    max-height: 500px; /* Adjust based on content height */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide desktop menu */
+    }
+
+    .menu-btn {
+        display: flex; /* Show menu button on mobile */
+    }
+
+    .mobile-menu {
+        display: flex; /* Initially hidden; will be toggled by JS */
+        max-height: 0; /* Hide menu initially */
+    }
+
+    .mobile-menu.active {
+        max-height: 500px; /* Adjust based on content height */
+    }
 }
 
 /* Hero Section Styling */
@@ -282,17 +305,6 @@ section p {
 
 .read-more:hover {
     background-color: #ff6666;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .view-all {
@@ -492,4 +504,47 @@ section p {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Mobile Menu Button Animation */
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: #ff4b5c;
+}
+
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: #ff4b5c;
+}
+
+/* Animate blog cards */
+.blog-cards .card.animate {
+    transform: translateY(0);
+    opacity: 1;
 }

@@ -5,7 +5,7 @@ function showThankYouMessage() {
     // Replace the existing content with a thank you message
     heroContent.innerHTML = `
         <div class="intro">
-            <h2>Thank You for Your Interest!</h2>
+            <h2>Thank You for Your Interest!</h2> 
             <p>I appreciate you reaching out. For any inquiries or further information, feel free to email me at <a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a>. I'll get back to you as soon as possible.</p>
         </div>
     `;
@@ -37,35 +37,36 @@ document.querySelector('a[href="#hero"]').addEventListener('click', function () 
     `;
 });
 
-// Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const navMenu = document.querySelector('nav ul');
-    
-    mobileMenuButton.addEventListener('click', function () {
-        navMenu.classList.toggle('active');
-    });
+// Toggle mobile menu
+document.querySelector('.menu-btn').addEventListener('click', function() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.classList.toggle('active');
 
+    // Toggle menu button lines animation
+    this.classList.toggle('active');
+});
+
+// Check if an element is in the viewport
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Animate blog cards when the blog section is in the viewport
+function onScroll() {
     const blogSection = document.querySelector('#blog');
     const blogCards = document.querySelectorAll('.blog-cards .card');
-
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
+    
+    if (isElementInViewport(blogSection)) {
+        blogCards.forEach(card => {
+            card.classList.add('animate');
+        });
     }
+}
 
-    function onScroll() {
-        if (isElementInViewport(blogSection)) {
-            blogCards.forEach(card => {
-                card.classList.add('animate');
-            });
-        }
-    }
-
-    window.addEventListener('scroll', onScroll);
-});
+window.addEventListener('scroll', onScroll);
