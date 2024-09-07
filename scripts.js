@@ -5,7 +5,8 @@ function showThankYouMessage() {
     // Replace the existing content with a thank you message
     heroContent.innerHTML = `
         <div class="intro">
-            <h2>Thank You for Your Interest!</h2> <p>I appreciate you reaching out. For any inquiries or further information, feel free to email me at <a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a>. I'll get back to you as soon as possible.</p>
+            <h2>Thank You for Your Interest!</h2>
+            <p>I appreciate you reaching out. For any inquiries or further information, feel free to email me at <a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a>. I'll get back to you as soon as possible.</p>
         </div>
     `;
 }
@@ -26,9 +27,9 @@ document.querySelector('a[href="#hero"]').addEventListener('click', function () 
     document.querySelector('#hero .hero-content').innerHTML = `
         <div class="intro">
             <h2>HELLO!</h2>
-                            <h1>I Am Ramakrishna</h1>
-                <p>As a dedicated Security Operations Center Analyst with a profound passion for technology and problem-solving, my career in cybersecurity is driven by a commitment to protecting digital environments and staying ahead of emerging threats. My expertise includes working with advanced tools like Microsoft Sentinel, Azure, and Splunk. Outside of work, I am an avid follower of anime, which fuels my creativity and strategic thinking. I continuously seek new tech trends and personal projects, balancing professional growth with a keen interest in innovative solutions and digital security.</p>
-                <div class="buttons">
+            <h1>I Am Ramakrishna</h1>
+            <p>As a dedicated Security Operations Center Analyst with a profound passion for technology and problem-solving, my career in cybersecurity is driven by a commitment to protecting digital environments and staying ahead of emerging threats. My expertise includes working with advanced tools like Microsoft Sentinel, Azure, and Splunk. Outside of work, I am an avid follower of anime, which fuels my creativity and strategic thinking. I continuously seek new tech trends and personal projects, balancing professional growth with a keen interest in innovative solutions and digital security.</p>
+            <div class="buttons">
                 <a href="#projects" class="btn">View Work</a>
                 <a href="javascript:void(0);" class="btn secondary-btn" onclick="showThankYouMessage()">Hire Me</a>
             </div>
@@ -36,8 +37,15 @@ document.querySelector('a[href="#hero"]').addEventListener('click', function () 
     `;
 });
 
-
+// Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navMenu = document.querySelector('nav ul');
+    
+    mobileMenuButton.addEventListener('click', function () {
+        navMenu.classList.toggle('active');
+    });
+
     const blogSection = document.querySelector('#blog');
     const blogCards = document.querySelectorAll('.blog-cards .card');
 
