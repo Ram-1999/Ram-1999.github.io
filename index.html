@@ -3,231 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramakrishna's Portfolio</title>
+    <title>Ramakrishna Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/light.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/duotone.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Ramakrishna</h1>
-            </div>
-            <nav>
-                <div class="menu-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul class="desktop-menu">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <section id="hero">
-        <div class="container hero-content">
-            <div class="intro">
-                <h2>HELLO!</h2>
-                <h1>I Am Ramakrishna</h1>
-                <p>As a dedicated Security Operations Center Analyst with a profound passion for technology and problem-solving, my career in cybersecurity is driven by a commitment to protecting digital environments and staying ahead of emerging threats. My expertise includes working with advanced tools like Microsoft Sentinel, Azure, and Splunk. Outside of work, I am an avid follower of anime, which fuels my creativity and strategic thinking. I continuously seek new tech trends and personal projects, balancing professional growth with a keen interest in innovative solutions and digital security.</p>
-                <div class="buttons">
-                    <a href="#projects" class="btn">View Work</a>
-                    <a href="javascript:void(0);" class="btn secondary-btn" onclick="showThankYouMessage()">Hire Me</a>
-                </div>
-            </div>
+   <!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">
+        <i class="fa-duotone fa-solid fa-shield"></i>
+        <span class="logo-text">Ram</span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+        <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="#blogs"><i class="fas fa-blog"></i> Blog</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+    
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <h1 class="greeting">HELLO!</h1>
+        <h2 class="intro">I Am Ramakrishna</h2>
+        <p class="description">
+            As a dedicated Security Operations Center Analyst with a profound passion for technology and problem-solving, my career in cybersecurity is driven by a commitment to protecting digital environments and staying ahead of emerging threats. My expertise includes working with advanced tools like Microsoft Sentinel, Azure, and Splunk. Outside of work, I am an avid follower of anime, which fuels my creativity and strategic thinking. I continuously seek new tech trends and personal projects, balancing professional growth with a keen interest in innovative solutions and digital security.
+        </p>
+        <div class="buttons">
+            <a href="#projects" class="btn view-work">View Work</a>
+            <a href="#contact" class="btn hire-me">Hire Me</a>
         </div>
     </section>
 
-    <section id="skills" class="skills-section">
-        <h2>My Skills</h2>
+    <!-- Modal HTML -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Thank you for your interest!</h2>
+            <p>I’m delighted to hear from you. If you have any questions or need further information, please don’t hesitate to email me at <a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a>. I’ll make sure to get back to you as soon as possible.</p>
+        </div>
+    </div>
+
+    <section id="experience" class="experience-section">
+        <div class="experience-content">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Accenture | Hyderabad</h3>
+                <p class="duration">3 years</p>
+                <div class="description-container">
+                    <p class="description">
+                        <span class="line">Experienced Security Analyst specializing in advanced threat detection and incident response.</span>
+                        <span class="line">With over 3 years of experience at Accenture, I have developed a deep expertise in utilizing tools such as Microsoft Sentinel, Azure, and Splunk to enhance cybersecurity measures.</span>
+                        <span class="line">My proactive approach led to a significant 25% reduction in cyber threat exposure through the implementation of robust Azure Conditional Access policies and the optimization of SIEM queries.</span>
+                        <span class="line">A dedicated team player, I focus on refining SOC processes and strengthening overall security posture.</span>
+                        <span class="line">Committed to continuous improvement and staying ahead of emerging threats, I strive to deliver exceptional results in the ever-evolving field of cybersecurity.</span>
+                    </p>
+                </div>
+                <a href="./Kanuri Ramakrishna.pdf" class="btn download-resume" download>Download Resume</a>
+            </div>
+        </div>
+    </section>    
+
+    <!-- Skills Section -->
+<section id="skills" class="skills-section">
+    <div class="skills-content">
+        <h2>Skills</h2>
         <div class="skills-grid">
-            <!-- Skills items here -->
             <div class="skill-item">
                 <i class="fas fa-shield-alt"></i>
-                <p>Microsoft Sentinel</p>
+                <h3>Microsoft Sentinel</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-cloud"></i>
-                <p>Azure</p>
+                <h3>Azure</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-shield-alt"></i>
-                <p>Microsoft Defender for Cloud Apps</p>
+                <h3>Microsoft Defender for Cloud Apps</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-shield-alt"></i>
-                <p>Microsoft Defender for O365</p>
+                <h3>Microsoft Defender for O365</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-shield-alt"></i>
-                <p>Microsoft Defender for Endpoint</p>
+                <h3>Microsoft Defender for Endpoint</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-lock"></i>
-                <p>Cloud Security</p>
+                <h3>Cloud Security</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-user-shield"></i>
-                <p>Active Directory</p>
+                <h3>Active Directory</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-user-shield"></i>
-                <p>Azure Active Directory</p>
+                <h3>Azure Active Directory</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-user-shield"></i>
-                <p>SSO</p>
+                <h3>SSO</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-chart-bar"></i>
-                <p>Splunk</p>
+                <h3>Splunk</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-search"></i>
-                <p>Qualys</p>
+                <h3>Qualys</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-cogs"></i>
-                <p>Postman</p>
+                <h3>Postman</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-terminal"></i>
-                <p>PowerShell Scripting</p>
+                <h3>PowerShell Scripting</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-database"></i>
-                <p>KQL</p>
+                <h3>KQL</h3>
             </div>
             <div class="skill-item">
                 <i class="fas fa-database"></i>
-                <p>SPL</p>
+                <h3>SPL</h3>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="experience">
-        <h2>My Experience</h2>
-        <div class="container">
-            <div class="experience-content animate">
-                <h4>Accenture | Hyderabad | 3 years</h4>
-                <p>Experienced Security Analyst with expertise in threat detection and incident response. Proficient in Microsoft Sentinel, Azure, and Splunk. Achieved a 25% reduction in cyber threat exposure by implementing Azure CA policies and optimizing SIEM queries. Collaborative team player focused on enhancing SOC processes and security posture.</p>
-                <a href="./Kanuri Ramakrishna.pdf" class="btn resume-btn" target="_blank" rel="noopener noreferrer" download>Discover My Experience</a>
-            </div>
-        </div>
-    </section>
+<!-- Projects Section -->
 
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-cards">
-                <div class="card">
-                    <img src="./images/Projects/project 1.png" alt="Project Image 1">
-                    <h3>Splunk SIEM</h3>
-                    <p>Enhanced security operations with a custom Splunk SIEM deployment. Integrated data from multiple sources, developed real-time dashboards, and configured alerts to detect and respond to security threats efficiently. Optimized queries to reduce false positives and improved incident response times.</p>
-                    <a href="https://github.com/Ram-1999/Splunk-SIEM-LAB" target="_blank" class="view-project">Fetch Code</a>
-                </div>
-                <div class="card">
-                    <img src="./images/Projects/project 2.jpg" alt="Project Image 2">
-                    <h3>Timer</h3>
-                    <p>Developed a versatile timer application to help manage and track time effectively. Features include customizable time intervals, notifications, and a user-friendly interface for setting and monitoring multiple timers, designed to boost productivity and time management.</p>
-                    <a href="https://github.com/Ram-1999/Timer" target="_blank" class="view-project">Fetch Code</a>
-                </div>
-                <div class="card">
-                    <img src="./images/Projects/project 3.png" alt="Project Image 3">
-                    <h3>Ping Pong</h3>
-                    <p>Created a network diagnostic tool to test and analyze connectivity between network nodes. Uses ICMP echo requests to measure latency and packet loss, providing real-time statistics and detailed network performance insights to assist in troubleshooting and optimization.</p>
-                    <a href="https://github.com/Ram-1999/PingPongGame" target="_blank" class="view-project">Fetch Code</a>
-                </div>
+<section id="projects" class="projects-section">
+    <div class="projects-content">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="card">
+                <img src="./images/Projects/project 1.png" alt="Splunk SIEM">
+                <h3>Splunk SIEM</h3>
+                <p>Optimized Splunk SIEM deployment for enhanced security operations. Developed real-time dashboards and alerts to detect threats and improve response times.</p>
+                <a href="https://github.com/Ram-1999/Splunk-SIEM-LAB" target="_blank" class="view-project">Fetch Code</a>
             </div>
-            <div class="view-all-projects">
-                <a href="./allprojects.html" class="view-all-link">View All Projects</a>
+            <div class="card">
+                <img src="./images/Projects/project 2.webp" alt="Timer">
+                <h3>Timer</h3>
+                <p>Versatile timer application with customizable intervals and notifications. Designed to boost productivity with an intuitive interface.</p>
+                <a href="https://github.com/Ram-1999/Timer" target="_blank" class="view-project">Fetch Code</a>
+            </div>
+            <div class="card">
+                <img src="./images/Projects/project 3.png" alt="Ping Pong">
+                <h3>Ping Pong</h3>
+                <p>Network diagnostic tool for measuring latency and packet loss. Provides real-time performance insights for network troubleshooting.</p>
+                <a href="https://github.com/Ram-1999/PingPongGame" target="_blank" class="view-project">Fetch Code</a>
             </div>
         </div>
-    </section>
+        <div class="view-all-projects">
+            <a href="./allprojects.html" class="view-all-link">View All Projects</a>
+        </div>
+    </div>
+</section>
 
-    <section id="blog">
-        <div class="container">
-            <h2>Blog</h2>
-            <div class="blog-cards">
-                <div class="card">
-                    <img src="./images/Blogs/Blog 1.png" alt="Blog Image 1">
-                    <h3>SIEM Lab Set Up</h3>
-                    <p>Step-by-step guide to setting up a Splunk SIEM environment for comprehensive security monitoring. Covers installation, configuration, and optimization to enhance threat detection and response capabilities.</p>
-                    <a href="https://medium.com/@ramakrishnakanuri/siem-lab-set-up-187d6b6430a2" target="_blank" class="read-more">Read More</a>
-                </div>
-                <div class="card">
-                    <img src="./images/Blogs/Blog 2.png" alt="Blog Image 2">
-                    <h3>SSO</h3>
-                    <p>Detailed walkthrough of implementing Single Sign-On (SSO) to streamline user authentication across multiple systems. Focuses on configuration, benefits, and best practices for improving security and user experience.</p>
-                    <a href="https://medium.com/@ramakrishnakanuri/single-sign-on-839c3fddb729" target="_blank" class="read-more">Read More</a>
-                </div>
-                <div class="card">
-                    <img src="./images/Blogs/Blog 3.png" alt="Blog Image 3">
-                    <h3>AZ500</h3>
-                    <p>A structured approach to passing the AZ-500 certification exam for Azure Security Engineers. Includes study tips, exam preparation strategies, and key topics to focus on for successful certification.</p>
-                    <a href="https://medium.com/@ramakrishnakanuri/az-500-microsoft-azure-security-technologies-c06fa6a4ff58" target="_blank" class="read-more">Read More</a>
-                </div>
-            </div>
-            <div class="view-all">
-                <a href="./allblogs.html" class="view-all-link">View All</a>
-            </div>
+<!---blog section-->
+<!-- Blog Section -->
+<section id="blogs" class="blogs-section">
+    <h2>Blogs</h2>
+    <div class="blogs-container">
+        <div class="card">
+            <img src="./images/Blogs/Blog 1.png" alt="Blog Image 1">
+            <h3>SIEM Lab Set Up</h3>
+            <p>Step-by-step guide to setting up a Splunk SIEM environment for comprehensive security monitoring. Covers installation, configuration, and optimization to enhance threat detection and response capabilities.</p>
+            <a href="https://medium.com/@ramakrishnakanuri/siem-lab-set-up-187d6b6430a2" target="_blank" class="read-more">Read More</a>
         </div>
-    </section>
+        <div class="card">
+            <img src="./images/Blogs/Blog 2.png" alt="Blog Image 2">
+            <h3>SSO</h3>
+            <p>Detailed walkthrough of implementing Single Sign-On (SSO) to streamline user authentication across multiple systems. Focuses on configuration, benefits, and best practices for improving security and user experience.</p>
+            <a href="https://medium.com/@ramakrishnakanuri/single-sign-on-839c3fddb729" target="_blank" class="read-more">Read More</a>
+        </div>
+        <div class="card">
+            <img src="./images/Blogs/Blog 3.png" alt="Blog Image 3">
+            <h3>AZ500</h3>
+            <p>A structured approach to passing the AZ-500 certification exam for Azure Security Engineers. Includes study tips, exam preparation strategies, and key topics to focus on for successful certification.</p>
+            <a href="https://medium.com/@ramakrishnakanuri/az-500-microsoft-azure-security-technologies-c06fa6a4ff58" target="_blank" class="read-more">Read More</a>
+        </div>
+    </div>
+    <div class="view-all">
+        <a href="./allblogs.html" class="view-all-link">View All Blogs</a>
+    </div>
+</section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>If you have any questions or would like to get in touch, please feel free to reach out through any of the following methods:</p>
-            <div class="contact-info">
-                <div class="contact-line">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span><a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a></span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+917396978139</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Hyderabad</span>
-                    </div>
-                </div>
-                <div class="contact-line">
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <span><a href="https://www.linkedin.com/in/kanuri-ramakrishna-88a4811b9/" target="_blank">LinkedIn</a></span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <span><a href="https://github.com/Ram-1999" target="_blank">GitHub</a></span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-medium"></i>
-                        <span><a href="https://medium.com/@ramakrishnakanuri" target="_blank">Medium</a></span>
-                    </div>
-                </div>
+<!--Contact info-->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you have any questions or would like to get in touch, please feel free to reach out through any of the following methods:</p>
+    <div class="contact-info">
+        <div class="contact-line">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span><a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a></span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+917396978139</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Hyderabad</span>
             </div>
         </div>
-    </section>
+        <div class="contact-line">
+            <div class="contact-item">
+                <span><a href="https://www.linkedin.com/in/kanuri-ramakrishna-88a4811b9/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
+            </div>
+            <div class="contact-item">
+                <span><a href="https://github.com/Ram-1999" target="_blank"><i class="fab fa-github"></i></a></span>
+            </div>
+            <div class="contact-item">
+                <span><a href="https://medium.com/@ramakrishnakanuri" target="_blank"><i class="fab fa-medium"></i></a></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
 </body>
 </html>

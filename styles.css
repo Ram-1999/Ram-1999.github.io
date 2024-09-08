@@ -1,266 +1,647 @@
-/* Reset margins and paddings */
+/* General reset and common styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
-    overflow-x: hidden; /* Prevent horizontal overflow */
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    background: #1f2633; /* Background color for the body */
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a2e;
+    color: white;
 }
 
-/* Navbar styling */
-header {
-    position: sticky; /* Use sticky positioning */
-    top: 0; /* Stick to the top of the viewport */
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    z-index: 10;
-    height: 60px; /* Adjust this based on your header’s height */
-}
-
-header .container {
+/* Sticky Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 15px; /* Adjusted padding for responsiveness */
-    height: 100%; /* Ensure container fills the header height */
+    padding: 20px;
+    background-color: #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-header h1 {
-    font-size: 32px;
-    color: #ff4b5c;
-}
-
-nav {
+/* Logo */
+.logo {
     display: flex;
     align-items: center;
+    font-size: 24px; /* Adjust size as needed */
 }
 
-/* Desktop menu styles */
-nav ul {
-    display: flex;
-    list-style: none;
+.logo i {
+    font-size: 30px; /* Icon size */
+    color: #ff4b5c; /* Icon color */
+    margin-right: 10px; /* Space between icon and text */
 }
 
-nav ul li {
-    margin-left: 30px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+.logo-text {
+    font-size: 24px; /* Text size */
+    color: #ff4b5c; /* Text color */
     font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar links */
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #ff4b5c; /* Red on hover */
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ff4b5c; /* Highlight the active section */
 }
 
-/* Mobile Menu Button */
-.menu-btn {
+/* Hamburger menu - hidden by default for larger screens */
+.hamburger {
     display: none;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     width: 30px;
-    height: 30px;
+    height: 21px;
     cursor: pointer;
     position: relative;
-    transition: transform 0.3s ease;
+    z-index: 1001;  /* Ensure it's on top */
+    transition: transform 0.3s;
 }
 
-.menu-btn span {
+.hamburger span {
     display: block;
-    width: 25px;
     height: 3px;
-    background-color: #fff;
-    margin: 3px 0;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.4s ease-in-out;
 }
 
-/* Mobile Menu Button Animation */
-.menu-btn.active span:nth-child(1) {
-    transform: rotate(45deg);
+/* When hamburger is active (opened), transform the spans to create a sharp ">" and change color to red */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, -5px); /* Sharp ">" top part */
     background-color: #ff4b5c;
 }
 
-.menu-btn.active span:nth-child(2) {
+.hamburger.active span:nth-child(2) {
     opacity: 0;
 }
 
-.menu-btn.active span:nth-child(3) {
-    transform: rotate(-45deg);
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, 5px); /* Sharp ">" bottom part */
     background-color: #ff4b5c;
 }
 
-/* Mobile Menu Styles */
-.mobile-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: rgba(0, 0, 0, 0.9);
-    width: 100%;
-    text-align: center;
-    transition: max-height 0.3s ease;
-    overflow: hidden;
-}
-
-.mobile-menu ul {
+/* Hero Section */
+.hero-section {
     display: flex;
     flex-direction: column;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-menu ul li {
-    margin: 20px 0;
-}
-
-.mobile-menu ul li a {
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-.mobile-menu ul li a:hover {
-    color: #ff4b5c;
-}
-
-/* Show the mobile menu when active */
-.mobile-menu.active {
-    display: flex;
-    max-height: 500px; /* Adjust based on content height */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    nav ul {
-        display: none; /* Hide desktop menu */
-    }
-
-    .menu-btn {
-        display: flex; /* Show menu button on mobile */
-    }
-
-    .mobile-menu {
-        display: flex; /* Initially hidden; will be toggled by JS */
-        max-height: 0; /* Hide menu initially */
-    }
-
-    .mobile-menu.active {
-        max-height: 500px; /* Adjust based on content height */
-    }
-}
-
-/* Hero Section Styling */
-#hero {
-    position: relative;
-    height: 100vh;
-    background: url('./images/5590457.jpg') no-repeat center center/cover; /* Use your profile picture here */
-    display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
     text-align: center;
+    padding: 20px;
+    background-color: #1a1a2e;
 }
 
-.hero-content {
-    z-index: 2;
-}
-
-#hero .intro h2 {
+.greeting {
     font-size: 48px;
-    margin-bottom: 20px;
-}
-
-#hero .intro h1 {
-    font-size: 72px;
-    margin-bottom: 20px;
     color: #ff4b5c;
 }
 
-#hero .intro p {
-    font-size: 18px;
-    margin-bottom: 30px;
+.intro {
+    font-size: 36px;
+    margin: 10px 0;
 }
 
-/* Button Styles */
-.buttons .btn {
-    background-color: #ff4b5c; /* Primary button color */
-    color: white;
-    padding: 15px 30px;
-    margin-right: 20px;
+.description {
+    max-width: 1400px; /* Constrain width on large screens */
+    font-size: 1.5vw; /* Responsive font size */
+    margin: 20px 0;
+    color: #ccc;
+    line-height: 1.6; /* Improve readability */
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
     text-decoration: none;
-    border-radius: 30px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold; /* Ensure text is bold for visibility */
+    text-transform: uppercase; /* Ensure text is uppercase */
+}
+
+/* View Work Button */
+.view-work {
+    background-color: #ff4b5c;
+    color: white;
+}
+
+/* Hire Me Button */
+.hire-me {
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #ff4b5c; /* Border color for Hire Me */
+    color: #ff4b5c; /* Text color for Hire Me */
+}
+
+/* Hover Effects */
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.view-work:hover {
+    background-color: #ff7373; /* Slightly lighter background color on hover */
+}
+
+.hire-me:hover {
+    background-color: #ff4b5c; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly lighter black background with opacity */
+}
+
+.modal-content {
+    background-color: #333; /* Dark background for modal */
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow for better focus */
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ff4b5c; /* Accent color */
+}
+
+.modal-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.modal-content a {
+    color: #ff4b5c;
+    text-decoration: none;
     font-weight: bold;
 }
 
-.buttons .btn:hover {
-    background-color: #ff6666; /* Hover color */
+.modal-content a:hover {
+    text-decoration: underline;
 }
 
-/* Skills, Experience, Projects, Blog, and Contact Section */
-section {
-    padding: 80px 15px; /* Adjusted padding for responsiveness */
-    background-color: #1f2633;
+.close-button {
+    color: #ff4b5c;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    transition: color 0.3s;
 }
 
-section h2 {
-    font-size: 48px;
-    color: #fff;
+.close-button:hover {
+    color: #fff; /* Change color on hover for better visibility */
+}
+
+/* Experience Section */
+.experience-section {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #0f0f1a); /* Gradient background */
+    text-align: center;
+}
+
+.experience-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.experience-section h2 {
+    font-size: 36px;
+    color: #ff4b5c; /* Heading color */
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700; /* Bold heading */
+}
+
+.experience-item {
+    background-color: #2e2e3a; /* Slightly lighter background for contrast */
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+    color: white;
+    position: relative; /* For additional effects */
+    overflow: hidden; /* To contain pseudo-elements */
+}
+
+.experience-item h3 {
+    font-size: 28px;
+    color: #ff4b5c; /* Heading color */
+    margin-bottom: 15px;
+    font-weight: 700; /* Bold heading */
+}
+
+.experience-item .duration {
+    font-size: 20px;
+    color: #bbb; /* Slightly lighter color for duration */
     margin-bottom: 20px;
-    text-align: center;
 }
 
-section p {
+.description-container {
+    text-align: left; /* Align text left for readability */
+    padding: 0 20px; /* Padding for better spacing */
+}
+
+.description {
     font-size: 18px;
-    color: #b0b0b0;
     line-height: 1.6;
+    color: #ddd;
+}
+
+.line {
+    display: block;
+    opacity: 0; /* Hide initially */
+    animation: fadeIn 1s forwards; /* Animation to fade in */
+}
+
+.line:nth-of-type(1) { animation-delay: 0s; }
+.line:nth-of-type(2) { animation-delay: 1s; }
+.line:nth-of-type(3) { animation-delay: 2s; }
+.line:nth-of-type(4) { animation-delay: 3s; }
+.line:nth-of-type(5) { animation-delay: 4s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.download-resume {
+    background-color: #ff4b5c;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-weight: 700; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+.download-resume:hover {
+    background-color: #ff7373;
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
     text-align: center;
 }
 
-/* Contact Info Styling */
+.skills-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-section h2 {
+    font-size: 36px;
+    color: #ff4b5c;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.skill-item {
+    background-color: #2e2e3a;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    color: #ff4b5c;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skill-item i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.skill-item h3 {
+    font-size: 18px;
+    color: whitesmoke;
+    font-weight: 700;
+}
+
+/* Hover Effects */
+.skill-item:hover {
+    background-color: #ff4b5c;
+    color: white;
+    transform: scale(1.05);
+}
+
+.skill-item:hover i {
+    color: white;
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 60px 20px;
+    background: #2e2e3a; /* Dark background for contrast */
+    text-align: center;
+}
+
+.projects-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-section h2 {
+    font-size: 36px;
+    color: #ff4b5c; /* Heading color */
+    margin-bottom: 40px;
+    font-weight: 700; /* Bold heading */
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1; /* All cards visible */
+    transform: rotateY(0); /* Ensure initial state is correct */
+    transform-style: preserve-3d;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #ff4b5c;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.card a.view-project {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ff4b5c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.card a.view-project:hover {
+    background-color: #ff7373;
+    transform: scale(1.05);
+}
+
+.view-all-projects {
+    margin-top: 30px;
+}
+
+.view-all-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff4b5c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.view-all-link:hover {
+    background-color: #ff7373;
+    transform: scale(1.05);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: rotateY(0);
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card:nth-child(1), .card:nth-child(2), .card:nth-child(3) , .card:nth-child(4){
+    animation: flipIn 1s ease forwards;
+}
+
+@keyframes flipIn {
+    from {
+        opacity: 0;
+        transform: rotateY(-90deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+
+}
+
+.blogs-section {
+    padding: 60px 20px;
+    background: #2e2e3a; /* Dark background for contrast */
+    text-align: center;
+}
+
+.blogs-section h2 {
+    font-size: 36px;
+    color: #ff4b5c; /* Heading color */
+    margin-bottom: 40px;
+    font-weight: 700; /* Bold heading */
+}
+
+.blogs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1; /* All cards visible */
+    transform: rotateY(0); /* Ensure initial state is correct */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #ff4b5c;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.card a.read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ff4b5c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.card a.read-more:hover {
+    background-color: #ff7373;
+    transform: scale(1.05);
+}
+
+.view-all {
+    margin-top: 30px;
+}
+
+.view-all-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff4b5c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.view-all-link:hover {
+    background-color: #ff7373;
+    transform: scale(1.05);
+}
+
+/* Contact Section Styling */
+#contact {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
+    text-align: center;
+}
+
+#contact h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #ff4b5c;
+}
+
+#contact p {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-line {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Space between items */
     margin-bottom: 20px;
 }
 
 .contact-item {
+    margin: 0 20px;
+    font-size: 1.1em;
     display: flex;
     align-items: center;
-    font-size: 18px;
-    color: #b0b0b0;
-    flex: 1 1 auto; /* Ensure items take up available space but do not shrink */
-    text-align: center; /* Center align text in each item */
 }
 
 .contact-item i {
-    font-size: 24px;
+    font-size: 1.5em;
     margin-right: 10px;
-    color: #ff4b5c;
 }
 
 .contact-item a {
-    color: #fff;
+    color: whitesmoke; /* Change to match your theme */
     text-decoration: none;
 }
 
@@ -268,268 +649,88 @@ section p {
     text-decoration: underline;
 }
 
-/* Ensure sections are visible and well-spaced */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
 
-/* Blog Cards */
-.blog-cards {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
+    .description {
+        font-size: 20px; /* Increase font size for mobile */
+        margin: 15px 10px; /* Adjust margins for mobile */
+    }
 
-.card {
-    background-color: #1f2633;
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%; /* Full width for responsiveness */
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transform: translateY(50px);
-    opacity: 0;
-    animation: slideUp 1s forwards;
-}
-
-.card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.card h3 {
-    margin-top: 15px;
-    font-size: 20px;
-    color: #fff;
-}
-
-.card p {
-    color: #b0b0b0;
-    margin-bottom: 15px;
-}
-
-.read-more {
-    display: inline-block;
-    background-color: #ff4b5c;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.read-more:hover {
-    background-color: #ff6666;
-}
-
-.view-all {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.view-all-link {
-    display: inline-block;
-    background-color: #ff4b5c; /* Primary button color */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.view-all-link:hover {
-    background-color: #ff6666; /* Lighter shade on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-}
-
-.view-all-link:active {
-    background-color: #ff4b5c; /* Primary color on click */
-    transform: scale(1); /* Reset zoom effect */
-}
-
-/* Projects Section Styles */
-.project-cards {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap; /* Added for responsiveness */
-}
-
-.project-cards .card {
-    background-color: #1f2633;
-    border: 2px solid transparent; /* Transparent border */
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%; /* Full width for responsiveness */
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.project-cards .card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.project-cards .card h3 {
-    margin-top: 15px;
-    font-size: 20px;
-    color: #fff;
-}
-
-.project-cards .card p {
-    color: #b0b0b0;
-    margin-bottom: 15px;
-}
-
-.project-cards .card .view-project {
-    display: inline-block;
-    background-color: #ff4b5c;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.project-cards .card .view-project:hover {
-    background-color: #ff6666;
-}
-
-.view-all-projects {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.view-all-projects .view-all-link {
-    display: inline-block;
-    background-color: #ff4b5c;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.view-all-projects .view-all-link:hover {
-    background-color: #ff6666;
-}
-
-/* Skills Section */
-.skills-section {
-    padding: 80px 15px; /* Adjusted padding for responsiveness */
-    text-align: center;
-}
-
-.skills-section h2 {
-    font-size: 48px;
-    margin-bottom: 40px;
-    color: #ff4b5c;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
-    gap: 20px;
-}
-
-.skill-item {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.skill-item i {
-    font-size: 36px;
-    color: #ff4b5c;
-    margin-bottom: 10px;
-}
-
-.skill-item p {
-    font-size: 18px;
-    color: #fff;
-}
-
-.skill-item:hover {
-    background-color: #444;
-    transform: scale(1.05);
-}
-
-/* Experience Section Styling */
-#experience {
-    padding: 80px 15px; /* Adjusted padding for responsiveness */
-    background-color: #1f2633;
-}
-
-.experience-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #2c3e50; /* Slightly different background for the content */
-    border-radius: 10px;
-    text-align: center;
-    transform: translateY(50px);
-    opacity: 0;
-    animation: slideUp 1s forwards;
-}
-
-.experience-content h4 {
-    font-size: 24px;
-    color: #ff4b5c;
-    margin-bottom: 20px;
-}
-
-.experience-content p {
-    font-size: 18px;
-    color: #b0b0b0;
-    margin-bottom: 30px;
-}
-
-.resume-btn {
-    display: inline-block;
-    background-color: #ff4b5c; /* Primary button color */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.resume-btn:hover {
-    background-color: #ff6666; /* Lighter shade on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-}
-
-.resume-btn:active {
-    background-color: #ff4b5c; /* Primary color on click */
-    transform: scale(1); /* Reset zoom effect */
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
+    .nav-links {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
         opacity: 0;
+        transition: all 0.5s ease-in-out;
+        transform: translateY(-100%);
+        height: 100vh; /* Ensure full height */
+        overflow-y: auto; /* Ensure scroll if needed */
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
 
-/* Animate blog cards */
-.blog-cards .card.animate {
-    transform: translateY(0);
-    opacity: 1;
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0); /* Slide down */
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+    .nav-links a i {
+        margin-right: 8px; /* Space between icon and text */
+        font-size: 20px; /* Icon size */
+    }
+
+    .skill-item {
+        /* Ensure that skill items look good on mobile */
+        padding: 15px;
+    }
+    
+    .skill-item i {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .skill-item h3 {
+        font-size: 18px;
+        color: whitesmoke;
+        font-weight: 700;
+    }
+    
+    /* Hover and Click Effects */
+    .skill-item:hover,
+    .skill-item:active {
+        background-color: #ff4b5c;
+        color: white;
+        transform: scale(1.05);
+    }
+    
+    .skill-item:hover i,
+    .skill-item:active i {
+        color: white;
+    }
+    .contact-line {
+        flex-direction: column;
+    }
+
+    .contact-item {
+        margin: 10px 0;
+    }
 }

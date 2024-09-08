@@ -3,35 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Blog Posts</title>
+    <title>All Blogs - Ramakrishna Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Ramakrishna</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#skills">Skills</a></li>
-                    <li><a href="index.html#experience">Experience</a></li>
-                    <li><a href="index.html#projects">Projects</a></li>
-                    <li><a href="index.html#blog">Blog</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <section id="all-blogs">
-        <div class="container">
-            <h2>All Blog Posts</h2>
-            <div class="blog-cards">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-duotone fa-solid fa-shield"></i>
+            <span class="logo-text">Ram</span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="index.html#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+            <li><a href="index.html#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+            <li><a href="index.html#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li><a href="index.html#blogs"><i class="fas fa-blog"></i> Blog</a></li>
+            <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- All Blogs Section -->
+    <section class="all-blogs">
+        <div class="blogs-content">
+            <h2>All Blogs</h2>
+            <div class="blogs-container">
                 <div class="card">
                     <img src="./images/Blogs/Blog 1.png" alt="Blog Image 1">
                     <h3>SIEM Lab Set Up</h3>
@@ -50,8 +52,13 @@
                     <p>A structured approach to passing the AZ-500 certification exam for Azure Security Engineers. Includes study tips, exam preparation strategies, and key topics to focus on for successful certification.</p>
                     <a href="https://medium.com/@ramakrishnakanuri/az-500-microsoft-azure-security-technologies-c06fa6a4ff58" target="_blank" class="read-more">Read More</a>
                 </div>
+                <!-- Continue adding blog cards as necessary -->
+            </div>
+            <div class="view-all-blogs">
+                <a href="./index.html#blogs" class="view-all-link">Back to Main Blogs</a>
             </div>
         </div>
     </section>
+    <script src="script.js"></script>
 </body>
 </html>

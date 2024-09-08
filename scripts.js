@@ -1,98 +1,157 @@
-// Function to update the hero section content with a thank you message
-function showThankYouMessage() {
-    var heroContent = document.querySelector('#hero .hero-content');
-    
-    if (heroContent) {
-        // Replace the existing content with a thank you message
-        heroContent.innerHTML = `
-            <div class="intro">
-                <h2>Thank You for Your Interest!</h2>
-                <p>I appreciate you reaching out. For any inquiries or further information, feel free to email me at <a href="mailto:kanuriramakrishna18@gmail.com">kanuriramakrishna18@gmail.com</a>. I'll get back to you as soon as possible.</p>
-            </div>
-        `;
-    }
+// Function to show the modal
+function showModal() {
+    document.body.style.overflow = 'hidden';  // Disable background scroll
+    document.getElementById('contact-modal').style.display = 'block';
 }
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+// Function to close the modal
+function closeModal() {
+    document.body.style.overflow = '';  // Re-enable background scroll
+    document.getElementById('contact-modal').style.display = 'none';
+}
+
+// Event listener for the "Hire Me" button
+document.querySelector('.hire-me').addEventListener('click', showModal);
+
+// Close the modal when the "Escape" key is pressed
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
 });
 
-// Handle home navigation to reset hero content
-const homeLink = document.querySelector('a[href="#hero"]');
-if (homeLink) {
-    homeLink.addEventListener('click', function () {
-        // Restore the original hero content
-        const heroContent = document.querySelector('#hero .hero-content');
-        if (heroContent) {
-            heroContent.innerHTML = `
-                <div class="intro">
-                    <h2>HELLO!</h2>
-                    <h1>I Am Ramakrishna</h1>
-                    <p>As a dedicated Security Operations Center Analyst with a profound passion for technology and problem-solving, my career in cybersecurity is driven by a commitment to protecting digital environments and staying ahead of emerging threats. My expertise includes working with advanced tools like Microsoft Sentinel, Azure, and Splunk. Outside of work, I am an avid follower of anime, which fuels my creativity and strategic thinking. I continuously seek new tech trends and personal projects, balancing professional growth with a keen interest in innovative solutions and digital security.</p>
-                    <div class="buttons">
-                        <a href="#projects" class="btn">View Work</a>
-                        <a href="javascript:void(0);" class="btn secondary-btn" onclick="showThankYouMessage()">Hire Me</a>
-                    </div>
-                </div>
-            `;
-        }
-    });
-}
-
-// Toggle mobile menu
-const menuBtn = document.querySelector('.menu-btn');
-if (menuBtn) {
-    menuBtn.addEventListener('click', function() {
-        const mobileMenu = document.querySelector('.mobile-menu');
-        if (mobileMenu) {
-            mobileMenu.classList.toggle('active');
-        }
-
-        // Toggle menu button lines animation
-        this.classList.toggle('active');
-    });
-}
-
-// Check if an element is in the viewport
-function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Animate blog cards when the blog section is in the viewport
-function onScroll() {
-    const blogSection = document.querySelector('#blog');
-    const blogCards = document.querySelectorAll('.blog-cards .card');
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    const hamburger = document.querySelector('.hamburger');
     
-    if (blogSection && blogCards.length > 0) {
-        if (isElementInViewport(blogSection)) {
-            blogCards.forEach(card => {
-                if (!card.classList.contains('animate')) {
-                    card.classList.add('animate');
-                }
-            });
-        }
+    // Toggle active class to open/close the menu
+    navLinks.classList.toggle('active');
+    
+    // Toggle the animation for the hamburger menu
+    hamburger.classList.toggle('active');
+}
+
+// Function to highlight the current section in view
+function highlightCurrentSection() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const offset = window.innerHeight / 3; // Adjust this value if needed
+
+    let index = sections.length;
+
+    while (--index && window.scrollY + offset < sections[index].offsetTop) {}
+
+    navLinks.forEach((link) => link.classList.remove('active'));
+    if (navLinks[index]) {
+        navLinks[index].classList.add('active');
     }
 }
 
-// Debounce function to improve scroll event performance
-function debounce(func, wait) {
+// Debounce function to limit how often a function can fire
+function debounce(func, wait = 20, immediate = true) {
     let timeout;
-    return function(...args) {
+    return function () {
+        const context = this, args = arguments;
+        const later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
         clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
     };
 }
 
-window.addEventListener('scroll', debounce(onScroll, 100));
+// Smooth scrolling behavior with adjustment for fixed header
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default anchor click behavior
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        // Adjust scroll position to account for fixed header
+        const headerHeight = document.querySelector('nav').offsetHeight; 
+        const targetOffset = targetSection.offsetTop - headerHeight;
+
+        window.scrollTo({
+            top: targetOffset,
+            behavior: 'smooth'
+        });
+
+        // Update active class after scrolling
+        setTimeout(() => {
+            highlightCurrentSection();
+        }, 500); // Adjust timeout to match scroll duration
+
+        // Close the menu if on mobile
+        const navLinks = document.getElementById('nav-links');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
+});
+
+// Listen for scroll events to highlight the current section, with debouncing
+window.addEventListener('scroll', debounce(highlightCurrentSection));
+
+// Close the navigation menu on clicking any link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+        const navLinks = document.getElementById('nav-links');
+        const hamburger = document.querySelector('.hamburger');
+        
+        // Close the menu by removing the active class
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+});
+
+// Ensure correct section highlight on page load or refresh
+document.addEventListener('DOMContentLoaded', function () {
+    highlightCurrentSection(); // Call once to ensure correct highlight
+    const cards = document.querySelectorAll('.card');
+
+    function handleAnimation(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }
+
+    const observerOptions = {
+        root: null,  // viewport
+        rootMargin: '0px',
+        threshold: 0.1  // Trigger when 10% of the element is visible
+    };
+
+    const observer = new IntersectionObserver(handleAnimation, observerOptions);
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+});
+
+// Update highlight function for mobile view
+function updateMobileHighlight() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const offset = window.innerHeight / 3;
+
+    let index = sections.length;
+
+    while (--index && window.scrollY + offset < sections[index].offsetTop) {}
+
+    navLinks.forEach((link) => link.classList.remove('active'));
+    if (navLinks[index]) {
+        navLinks[index].classList.add('active');
+    }
+}
+
+// Listen for scroll events to highlight the current section, with debouncing
+window.addEventListener('scroll', debounce(updateMobileHighlight));
